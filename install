@@ -1,3 +1,4 @@
 #!/bin/bash
 ./scripts/install_tmux.sh
 ./scripts/install_nvim.sh
+./scripts/install_ohmyposh.sh
