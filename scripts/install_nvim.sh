@@ -2,5 +2,6 @@
 # First, install the nvim appimage
 
 # Nvim config file
-rm -rf $HOME/.config/nvim/
-ln -s `pwd`/configs/nvim/ $HOME/.config/nvim/
+# rm -rf $HOME/.config/nvim/
+# ln -s `pwd`/configs/nvim/ $HOME/.config/nvim/
+cp -r `pwd`/configs/nvim/ $HOME/.config/
