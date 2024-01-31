@@ -69,6 +69,7 @@ require("mason-null-ls").setup({
 		"pylint",
 		"yamlfmt",
 		"yamllint",
+		"latexindent",
 	},
 	-- auto-install configured formatters & linters (with null-ls)
 	automatic_installation = true,
@@ -80,6 +81,15 @@ require("lspconfig").lua_ls.setup({})
 
 -- (Optional) Configure lua language server for neovim
 require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+
+require("lspconfig").clangd.setup({
+	on_attach = on_attach,
+	capabilities = { offsetEncoding = { "utf-16" } },
+	cmd = {
+		"clangd",
+		"--offset-encoding=utf-16",
+	},
+})
 
 lsp.skip_server_setup({ "jdtls" }) -- Skip jdtls bc we use nvim-jdtls instead
 
