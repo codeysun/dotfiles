@@ -35,6 +35,7 @@ if which "rg" >/dev/null; then
   echo "Ripgrep is already installed"
 else
   echo "Ripgrep is not installed. Installing..."
+fi
 
 # Nvim config file
 # rm -rf $HOME/.config/nvim/
