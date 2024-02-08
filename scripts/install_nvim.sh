@@ -30,6 +30,12 @@ else
   echo "Installation complete."
 fi
 
+# TODO: Check if ripgrep is installed (for fuzzy finder)
+if which "rg" >/dev/null; then
+  echo "Ripgrep is already installed"
+else
+  echo "Ripgrep is not installed. Installing..."
+
 # Nvim config file
 # rm -rf $HOME/.config/nvim/
 # ln -s `pwd`/configs/nvim/ $HOME/.config/nvim/
