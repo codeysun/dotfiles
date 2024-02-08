@@ -30,12 +30,31 @@ else
   echo "Installation complete."
 fi
 
-# TODO: Check if ripgrep is installed (for fuzzy finder)
+# Install ripgrep
 if which "rg" >/dev/null; then
-  echo "Ripgrep is already installed"
+  echo "Ripgrep is already installed."
 else
+  # If the application is not found, install it
   echo "Ripgrep is not installed. Installing..."
+  ripgrep_url="https://github.com/BurntSushi/ripgrep/releases/download/14.1.0/ripgrep-14.1.0-x86_64-unknown-linux-musl.tar.gz"
+  install_dir="$HOME/.local/bin"
+  mkdir -p "$install_dir"
+  rg_tar="ripgrep.tar.gz"
+  wget -qO "$rg_tar" "$ripgrep_url"
+  tar -xvf "ripgrep.tar.gz"
+  mv "ripgrep-14.1.0-x86_64-unknown-linux-musl/rg" "$install_dir"
+  rm "ripgrep.tar.gz"
+  rm -rf "ripgrep-14.1.0-x86_64-unknown-linux-musl/rg"
+  echo "Installation complete."
 fi
+
+# # Install npm
+# if which "rg" >/dev/null; then
+#   echo "Ripgrep is already installed."
+# else
+#   # If the application is not found, install it
+#   echo "Installation complete."
+# fi
 
 # Nvim config file
 # rm -rf $HOME/.config/nvim/
