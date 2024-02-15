@@ -48,13 +48,17 @@ else
   echo "Installation complete."
 fi
 
-# # Install npm
-# if which "rg" >/dev/null; then
-#   echo "Ripgrep is already installed."
-# else
-#   # If the application is not found, install it
-#   echo "Installation complete."
-# fi
+# Install node/npm
+if which "node" >/dev/null; then
+  echo "node.js is already installed."
+else
+  echo "Node.js is not installed. Installing node and npm..."
+  # If the application is not found, install it
+  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  source ~/.bashrc
+  nvm install node
+  echo "Installation complete."
+fi
 
 # Nvim config file
 # rm -rf $HOME/.config/nvim/
