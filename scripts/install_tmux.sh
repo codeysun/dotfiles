@@ -12,6 +12,9 @@ else
   echo "Installation complete."
 fi
 
+# Install tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # Tmux config file
 rm -rf $HOME/.tmux.conf
 ln -s `pwd`/configs/tmux.conf $HOME/.tmux.conf
