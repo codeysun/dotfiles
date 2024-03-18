@@ -78,3 +78,12 @@ keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 -- notify
 local notify = require("notify")
 keymap.set("n", "<leader>nn", notify.dismiss, {})
+
+-- git
+local neogit = require("neogit")
+
+keymap.set("n", "<leader>gs", neogit.open, { noremap = true })
+keymap.set("n", "<leader>gc", ":Neogit commit<CR>", { noremap = true })
+keymap.set("n", "<leader>gp", ":Neogit pull<CR>", { noremap = true })
+keymap.set("n", "<leader>gP", ":Neogit push<CR>", { noremap = true })
+keymap.set("n", "<leader>gb", ":GitBlameToggle<CR>", { noremap = true })
