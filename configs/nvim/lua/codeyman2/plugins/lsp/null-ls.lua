@@ -21,6 +21,7 @@ null_ls.setup({
 		formatting.stylua, -- lua formatter
 		formatting.black,
 		formatting.yamlfmt,
+		formatting.latexindent,
 		-- formatting.clang_format,
 		diagnostics.cpplint,
 		diagnostics.pylint,
