@@ -28,3 +28,7 @@ require("codeyman2.plugins.minimap")
 require("codeyman2.plugins.noice")
 require("codeyman2.plugins.sniprun")
 require("codeyman2.plugins.vimtex")
+
+-- Generally read .keymap files as C ones
+vim.cmd([[autocmd BufNewFile,BufRead *.keymap setfiletype c]])
+vim.cmd([[autocmd BufNewFile,BufRead *.overlay setfiletype c]])
