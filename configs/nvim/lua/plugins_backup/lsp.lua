@@ -64,7 +64,7 @@ require("mason-null-ls").setup({
 	ensure_installed = {
 		"prettier", -- ts/js formatter
 		"stylua", -- lua formatter
-		"clang_format",
+		"clang-format",
 		"black", -- python formatter
 		"cpplint",
 		"pylint",

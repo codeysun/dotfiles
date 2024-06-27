@@ -1,6 +1,3 @@
-vim.g.mapleader = " " -- default mapleader is \
-vim.g.maplocalleader = " "
-
 local keymap = vim.keymap -- for conciseness
 
 -- general keymaps
