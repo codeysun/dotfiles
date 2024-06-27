@@ -62,5 +62,6 @@ fi
 
 # Nvim config file
 # rm -rf $HOME/.config/nvim/
-# ln -s `pwd`/configs/nvim/ $HOME/.config/nvim/
-cp -r `pwd`/configs/nvim/ $HOME/.config/
+# mkdir $HOME/.config/nvim/
+ln -sf `pwd`/configs/nvim/ $HOME/.config/
+# cp -r `pwd`/configs/nvim/ $HOME/.config/
