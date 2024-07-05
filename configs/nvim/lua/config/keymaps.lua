@@ -49,10 +49,10 @@ keymap.set("n", "<leader>h", ":tabp<CR>", { desc = "Prev tab" }) --  go to previ
 -- plugin keymaps
 
 -- navigator
-keymap.set({ "n", "t" }, "<C-Left>", "<CMD>NavigatorLeft<CR>")
-keymap.set({ "n", "t" }, "<C-Right>", "<CMD>NavigatorRight<CR>")
-keymap.set({ "n", "t" }, "<C-Up>", "<CMD>NavigatorUp<CR>")
-keymap.set({ "n", "t" }, "<C-Down>", "<CMD>NavigatorDown<CR>")
+keymap.set({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>")
+keymap.set({ "n", "t" }, "<C-l>", "<CMD>NavigatorRight<CR>")
+keymap.set({ "n", "t" }, "<C-k>", "<CMD>NavigatorUp<CR>")
+keymap.set({ "n", "t" }, "<C-j>", "<CMD>NavigatorDown<CR>")
 -- keymap.set({'n', 't'}, '<A-p>', '<CMD>NavigatorPrevious<CR>')
 
 -- vim-maximizer
