@@ -17,4 +17,4 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Tmux config file
 rm -rf $HOME/.tmux.conf
-ln -s `pwd`/configs/tmux.conf $HOME/.tmux.conf
+ln -s `pwd`/configs/tmux/tmux.conf $HOME/.tmux.conf
