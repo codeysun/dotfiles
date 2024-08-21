@@ -23,6 +23,6 @@ return {
 				},
 			},
 		})
-		telescope.load_extension("noice")
+		-- telescope.load_extension("noice")
 	end,
 }

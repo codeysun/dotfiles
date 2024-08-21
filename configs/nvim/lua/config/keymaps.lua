@@ -41,10 +41,13 @@ keymap.set("n", "<leader>sv", "<C-w>s", { desc = "Split window horizontally" }) 
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Equalize windows" }) -- make split windows equal width & height
 keymap.set("n", "<leader>sx", ":close<CR>", { desc = "Close split window" }) -- close current split window
 
-keymap.set("n", "<leader>to", ":tabnew<CR>", { desc = "New tab" }) -- open new tab
-keymap.set("n", "<leader>tx", ":tabclose<CR>", { desc = "Close tab" }) -- close current tab
-keymap.set("n", "<leader>l", ":tabn<CR>", { desc = "Next tab" }) --  go to next tab
-keymap.set("n", "<leader>h", ":tabp<CR>", { desc = "Prev tab" }) --  go to previous tab
+-- keymap.set("n", "<leader>to", ":tabnew<CR>", { desc = "New tab" }) -- open new tab
+-- keymap.set("n", "<leader>tx", ":tabclose<CR>", { desc = "Close tab" }) -- close current tab
+-- keymap.set("n", "<leader>l", ":tabn<CR>", { desc = "Next tab" }) --  go to next tab
+-- keymap.set("n", "<leader>h", ":tabp<CR>", { desc = "Prev tab" }) --  go to previous tab
+keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Delete buffer" }) --  go to next buffer
+keymap.set("n", "<leader>l", ":bn<CR>", { desc = "Next buffer" }) --  go to next buffer
+keymap.set("n", "<leader>h", ":bp<CR>", { desc = "Prev buffer" }) --  go to previous buffer
 
 -- plugin keymaps
 

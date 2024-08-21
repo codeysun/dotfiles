@@ -84,7 +84,7 @@ return {
 
 			styles = {
 				bold = true,
-				italic = true,
+				italic = false,
 				transparency = true,
 			},
 
@@ -128,6 +128,7 @@ return {
 			},
 
 			highlight_groups = {
+				Comment = { italic = true },
 				-- Comment = { fg = "foam" },
 				-- VertSplit = { fg = "muted", bg = "muted" },
 			},
