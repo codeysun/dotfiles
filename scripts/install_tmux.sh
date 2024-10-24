@@ -8,7 +8,13 @@ if which "$app_name" >/dev/null; then
 else
   # If the application is not found, install it
   echo "tmux is not installed. Installing..."
-  sudo apt install tmux
+  tmux_url="https://github.com/nelsonenzo/tmux-appimage/releases/download/3.3a/tmux.appimage"
+  install_dir="$HOME/.local/bin"
+  mkdir -p "$install_dir"
+  tmux_appimage="$install_dir/tmux.appimage"
+  wget -qO "$tmux_appimage" "$tmux_url"
+  chmod +x "$tmux_appimage"
+  mv "$tmux_appimage" "$install_dir/tmux"
   echo "Installation complete."
 fi
 
