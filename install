@@ -18,3 +18,5 @@ install_prompt() {
 install_prompt "tmux" "./scripts/install_tmux.sh"
 install_prompt "Neovim" "./scripts/install_nvim.sh"
 install_prompt "oh-my-posh" "./scripts/install_ohmyposh.sh"
+install_prompt "fzf" "./scripts/install_fzf.sh"
+install_prompt "fastfetch" "./scripts/install_fastfetch.sh"
