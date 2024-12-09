@@ -6,7 +6,7 @@ return {
 
 		lint.linters_by_ft = {
 
-			python = { "pylint" },
+			python = { "ruff" },
 			c = { "cpplint" },
 			cpp = { "cpplint" },
 			yaml = { "yamllint" },

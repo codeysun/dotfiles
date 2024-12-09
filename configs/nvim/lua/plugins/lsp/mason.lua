@@ -22,7 +22,8 @@ return {
 				"isort",
 				"black", -- python formatter
 				"cpplint",
-				"pylint",
+				-- "pylint",
+				"ruff",
 				"yamlfmt",
 				"yamllint",
 				"latexindent",
