@@ -46,8 +46,8 @@ keymap.set("n", "<leader>sx", ":close<CR>", { desc = "Close split window" }) -- 
 -- keymap.set("n", "<leader>l", ":tabn<CR>", { desc = "Next tab" }) --  go to next tab
 -- keymap.set("n", "<leader>h", ":tabp<CR>", { desc = "Prev tab" }) --  go to previous tab
 keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Delete buffer" }) --  go to next buffer
-keymap.set("n", "<leader>l", ":bn<CR>", { desc = "Next buffer" }) --  go to next buffer
-keymap.set("n", "<leader>h", ":bp<CR>", { desc = "Prev buffer" }) --  go to previous buffer
+-- keymap.set("n", "<leader>l", ":bn<CR>", { desc = "Next buffer" }) --  go to next buffer
+-- keymap.set("n", "<leader>h", ":bp<CR>", { desc = "Prev buffer" }) --  go to previous buffer
 
 -- plugin keymaps
 
