@@ -64,16 +64,6 @@ keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", { desc = "Toggle window ma
 -- nvim-tree
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
 
--- telescope
-local builtin = require("telescope.builtin")
-keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
-keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Find grep string" })
-keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
-keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find help tags" })
-keymap.set("n", "<leader>fs", function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end, { desc = "Find grep string under cursor" })
-
 -- undotree
 keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle undo tree" })
 
