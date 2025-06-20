@@ -12,3 +12,5 @@ If you also want to install the splash screen:
 sudo rm -f /etc/motd
 sudo ln -s ~/dotfiles/motd /etc/motd
 ```
+
+Install script is verified on Ubuntu. MacOS will need to install with `brew`
