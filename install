@@ -23,3 +23,4 @@ install_prompt "fzf" "./scripts/install_fzf.sh"
 install_prompt "fastfetch" "./scripts/install_fastfetch.sh"
 install_prompt "yazi" "./scripts/install_yazi.sh"
 install_prompt "zoxide" "./scripts/install_zoxide.sh"
+# TODO: Add lazygit
