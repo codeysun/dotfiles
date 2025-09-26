@@ -64,16 +64,6 @@ keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", { desc = "Toggle window ma
 -- nvim-tree
 keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
 
--- telescope
-local builtin = require("telescope.builtin")
-keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find files" })
-keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Find grep string" })
-keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Find buffers" })
-keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find help tags" })
-keymap.set("n", "<leader>fs", function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end, { desc = "Find grep string under cursor" })
-
 -- undotree
 keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle undo tree" })
 
@@ -89,3 +79,119 @@ keymap.set("n", "<leader>gc", ":Neogit commit<CR>", { noremap = true, desc = "Gi
 keymap.set("n", "<leader>gp", ":Neogit pull<CR>", { noremap = true, desc = "Git pull" })
 keymap.set("n", "<leader>gP", ":Neogit push<CR>", { noremap = true, desc = "Git push" })
 keymap.set("n", "<leader>gb", ":GitBlameToggle<CR>", { noremap = true, desc = "Toggle git blame" })
+
+-- dap
+local mason_dap = require("mason-nvim-dap")
+local dap = require("dap")
+local ui = require("dapui")
+local dap_virtual_text = require("nvim-dap-virtual-text")
+
+-- Dap Virtual Text
+dap_virtual_text.setup()
+
+mason_dap.setup({
+    ensure_installed = { "codelldb" },
+    automatic_installation = true,
+    handlers = {
+        function(config)
+            require("mason-nvim-dap").default_setup(config)
+        end,
+    },
+})
+
+dap.adapters.codelldb = {
+  type = 'server',
+  port = "${port}",
+  executable = {
+    command = "codelldb", -- or if not in $PATH: "/absolute/path/to/codelldb"
+    args = {"--port", "${port}"},
+  }
+}
+
+dap.configurations.cpp = {
+  {
+    name = "Launch file",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+  },
+}
+
+local project_config = vim.fn.getcwd() .. "/.nvim.lua"
+if vim.fn.filereadable(project_config) == 1 then
+  dofile(project_config)
+end
+
+-- Dap Keybindings
+vim.keymap.set('n', '<Leader>db', '<cmd>DapToggleBreakpoint<cr>', { desc = "Toggle breakpoint" })
+vim.keymap.set('n', '<Leader>dn', '<cmd>DapNew<cr>', { desc = "Launch new debug session" })
+vim.keymap.set('n', '<Leader>dc', '<cmd>DapContinue<cr>', { desc = "Continue debug execution" })
+vim.keymap.set('n', '<Leader>dx', '<cmd>DapTerminate<cr>', { desc = "Terminate debug session" })
+vim.keymap.set('n', '<Leader>d<Down>', '<cmd>DapStepOver<cr>', { desc = "Step over function" })
+vim.keymap.set('n', '<Leader>d<Right>', '<cmd>DapStepInto<cr>', { desc = "Step into function" })
+vim.keymap.set('n', '<Leader>d<Left>', '<cmd>DapStepOut<cr>', { desc = "Step out of function" })
+vim.keymap.set('n', '<Leader>d<Up>', '<cmd>DapRestartFrame<cr>', { desc = "Restart frame" })
+
+-- Dap UI
+ui.setup({
+    layouts = { {
+        elements = { {
+            id = "scopes",
+            size = 0.25
+        }, {
+            id = "breakpoints",
+            size = 0.25
+        }, {
+            id = "stacks",
+            size = 0.25
+        }, {
+            id = "watches",
+            size = 0.25
+        } },
+        position = "left",
+        size = 30
+    }, {
+        elements = { {
+            id = "repl",
+            size = 0.25
+        }, {
+            id = "console",
+            size = 0.25
+        } },
+        position = "bottom",
+        size = 10
+    } }
+})
+
+-- vim.fn.sign_define("DapBreakpoint", { text = "🚩" })
+-- vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "error", linehl = "", numhl = "" })
+-- vim.fn.sign_define("DapBreakpointCondition", { text = "●", texthl = "@character", linehl = "", numhl = "" })
+-- vim.fn.sign_define("DapLogPoint", { text = "●", texthl = "@type", linehl = "", numhl = "" })
+-- vim.fn.sign_define("DapBreakpointRejected", { text = "●", texthl = "@function", linehl = "", numhl = "" })
+
+dap.listeners.before.attach.dapui_config = function()
+    ui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+    ui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+    ui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+    ui.close()
+end
+
+-- Dap UI
+
+vim.keymap.set('n', '<Leader>dt', function () ui.toggle({ reset = true }) end, { desc = "Toggle debugger windows" })
+
+local dap_cpp = require("codey.debug.dap-cpp")
+        dap.adapters.lldb = dap_cpp.lldb_adapter
+local dap_utils = require("codey.debug.utils")
+dap_utils.register_debug_kind("cpp", dap_cpp.new_cpp_debug_config)
+dap_utils.make_commands() -- add :LaunchDebug and :LaunchDebugLast

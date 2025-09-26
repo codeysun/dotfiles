@@ -18,6 +18,7 @@ return {
 		-- Define your formatters
 		formatters_by_ft = {
 			lua = { "stylua" },
+			luau = { "stylua" },
 			python = { "black" },
 			javascript = { { "prettierd", "prettier" } },
 			markdown = { "prettier" },
@@ -25,7 +26,7 @@ return {
 			cpp = { "clang-format" },
 		},
 		-- Set up format-on-save
-		format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
+		-- format_on_save = { timeout_ms = 500, lsp_format = "fallback" },
 		-- -- Customize formatters
 		-- formatters = {
 		-- 	prettier = {

@@ -5,7 +5,8 @@ install_prompt() {
     local app_name=$1
     local script=$2
     read -p "Do you want to install $app_name? ([y]/n): " response
-    response=${response,,}  # Convert response to lowercase
+    response=$(echo "$response" | tr '[:upper:]' '[:lower:]')
+    # response=${response,,}  # Convert response to lowercase
     if [[ -z $response ]]; then
         response="yes" # If the response is empty, set it to "yes"
     fi
@@ -22,3 +23,4 @@ install_prompt "fzf" "./scripts/install_fzf.sh"
 install_prompt "fastfetch" "./scripts/install_fastfetch.sh"
 install_prompt "yazi" "./scripts/install_yazi.sh"
 install_prompt "zoxide" "./scripts/install_zoxide.sh"
+# TODO: Add lazygit

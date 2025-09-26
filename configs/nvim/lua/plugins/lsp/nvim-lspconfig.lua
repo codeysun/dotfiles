@@ -47,6 +47,7 @@ return {
 				end,
 
 				jdtls = lsp_zero.noop,
+        luau_lsp = lsp_zero.noop
 			},
 		})
 	end,
