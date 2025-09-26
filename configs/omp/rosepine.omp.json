@@ -16,6 +16,11 @@
       "alignment": "left",
       "segments": [
         {
+          "type": "python",
+          "foreground": "p:wight",
+          "template": "({{ .Venv }}) "
+        },
+        {
           "foreground": "p:wight",
           "style": "plain",
           "template": "{{.Icon}} ",
