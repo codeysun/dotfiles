@@ -20,7 +20,7 @@ if which "$app_name" >/dev/null; then
 else
   # If the application is not found, install it
   echo "Neovim is not installed. Installing..."
-  neovim_url="https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage"
+  neovim_url="https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage"
   install_dir="$HOME/.local/bin"
   mkdir -p "$install_dir"
   neovim_appimage="$install_dir/nvim.appimage"
