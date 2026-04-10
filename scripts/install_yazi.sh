@@ -19,3 +19,6 @@ else
   rm yazi-x86_64-unknown-linux-gnu.zip
   echo "Installation complete."
 fi
+
+# Yazi config file
+ln -s `pwd`/configs/yazi/ $HOME/.config/
