@@ -2,19 +2,25 @@
 
 app_name="tmux"
 
+OS="$(uname)"
+
 # Check if tmux is installed
 if which "$app_name" >/dev/null; then
   echo "tmux is already installed."
 else
   # If the application is not found, install it
   echo "tmux is not installed. Installing..."
-  tmux_url="https://github.com/nelsonenzo/tmux-appimage/releases/download/3.3a/tmux.appimage"
-  install_dir="$HOME/.local/bin"
-  mkdir -p "$install_dir"
-  tmux_appimage="$install_dir/tmux.appimage"
-  wget -qO "$tmux_appimage" "$tmux_url"
-  chmod +x "$tmux_appimage"
-  mv "$tmux_appimage" "$install_dir/tmux"
+  if [[ "$OS" == "Darwin" ]]; then
+    brew install tmux
+  else
+    tmux_url="https://github.com/nelsonenzo/tmux-appimage/releases/download/3.3a/tmux.appimage"
+    install_dir="$HOME/.local/bin"
+    mkdir -p "$install_dir"
+    tmux_appimage="$install_dir/tmux.appimage"
+    wget -qO "$tmux_appimage" "$tmux_url"
+    chmod +x "$tmux_appimage"
+    mv "$tmux_appimage" "$install_dir/tmux"
+  fi
   echo "Installation complete."
 fi
 
