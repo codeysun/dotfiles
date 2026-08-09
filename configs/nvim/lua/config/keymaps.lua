@@ -49,7 +49,10 @@ keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Delete buffer" }) --  go to n
 -- keymap.set("n", "<leader>l", ":bn<CR>", { desc = "Next buffer" }) --  go to next buffer
 -- keymap.set("n", "<leader>h", ":bp<CR>", { desc = "Prev buffer" }) --  go to previous buffer
 
--- plugin keymaps
+-- plugin keymaps (Neovim only — VSCode mappings live in config/vscode.lua)
+if vim.g.vscode then
+	return
+end
 
 -- navigator
 keymap.set({ "n", "t" }, "<C-h>", "<CMD>NavigatorLeft<CR>")
